@@ -17,49 +17,45 @@ function displayPage() {
 
     mainContent.innerHTML = `
         <style>
+            /* خلفية الصفحة العامة */
+            body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; margin: 0; padding: 10px; }
+            
             @keyframes emergencyFlash {
-                0%, 100% { text-shadow: 0 0 15px red; filter: drop-shadow(0 0 5px red); transform: scale(1); }
-                50% { text-shadow: 0 0 20px blue; filter: drop-shadow(0 0 10px blue); transform: scale(1.15); }
+                0%, 100% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
+                50% { filter: drop-shadow(0 0 15px blue); transform: scale(1.1); }
             }
             @keyframes fastBounce {
                 0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-8px); }
+                50% { transform: translateY(-6px); }
             }
             .price-row { 
-                display: flex; 
-                align-items: center; 
-                justify-content: center; 
-                gap: 12px; 
-                white-space: nowrap; 
-                margin: 5px 0;
+                display: flex; align-items: center; justify-content: center; 
+                gap: 15px; white-space: nowrap; margin: 10px 0;
             }
             .moving-price { 
                 animation: fastBounce 0.7s infinite ease-in-out; 
-                color: #e63946; 
-                font-size: 2.8em; 
-                font-weight: 900;
-                margin: 0;
+                color: #d63031; font-size: 3em; font-weight: 900; margin: 0;
             }
-            .police-light { 
-                animation: emergencyFlash 0.4s infinite alternate; 
-                font-size: 2em;
+            .police-light { animation: emergencyFlash 0.4s infinite alternate; font-size: 2.2em; }
+            
+            /* تحسين شكل المدخلات */
+            input, select {
+                width: 100%; padding: 16px; margin-bottom: 12px;
+                border: 2px solid #e0e0e0; border-radius: 12px;
+                font-size: 1.1em; transition: 0.3s; outline: none;
             }
-            .special-offer-box {
-                margin-top: 15px;
-                border-top: 2px solid #ffcccc;
-                padding-top: 15px;
-            }
+            input:focus, select:focus { border-color: #0984e3; box-shadow: 0 0 8px rgba(9, 132, 227, 0.2); }
         </style>
 
-        <div id="order-card" style="max-width: 500px; margin: 20px auto; background: white; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); overflow: hidden; direction: rtl; font-family: sans-serif; border: 1px solid #eee;">
-            <div style="padding: 30px 20px; text-align: center;">
-                <h2 style="color: #444; margin-bottom: 5px; font-size: 1.3em;">آلة صنع الشارات الاحترافية</h2>
-                <h1 style="color: #000; margin-top: 0; font-size: 2.5em; font-weight: 900; white-space: nowrap;">Machine Pin's</h1>
+        <div id="order-card" style="max-width: 500px; margin: 20px auto; background: #ffffff; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; direction: rtl; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+            <div style="padding: 35px 25px; text-align: center; background: #fff;">
+                <h2 style="color: #636e72; margin-bottom: 5px; font-size: 1.2em; letter-spacing: 1px;">آلة صنع الشارات الاحترافية</h2>
+                <h1 style="color: #2d3436; margin-top: 0; font-size: 2.6em; font-weight: 900; white-space: nowrap;">Machine Pin's</h1>
                 
-                <p style="color: #e63946; font-weight: bold; margin: 15px 0; font-size: 1.1em;">⚠️ سارع بالطلب.. الكمية محدودة جداً!</p>
+                <p style="color: #e17055; font-weight: bold; margin: 15px 0; font-size: 1.1em;">⚠️ سارع بالطلب.. الكمية محدودة جداً!</p>
 
-                <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 20px; border-radius: 15px; margin: 15px 0;">
-                    <span style="text-decoration: line-through; color: #999; font-size: 1.3em; display: block; margin-bottom: 5px;">25,000 دج</span>
+                <div style="background: #fff9f9; border: 2.5px dashed #ff7675; padding: 25px; border-radius: 20px; margin: 20px 0;">
+                    <span style="text-decoration: line-through; color: #b2bec3; font-size: 1.4em; display: block;">25,000 دج</span>
                     
                     <div class="price-row">
                         <span class="police-light">🚨</span>
@@ -67,38 +63,38 @@ function displayPage() {
                         <span class="police-light">🚨</span>
                     </div>
                     
-                    <div class="special-offer-box">
-                        <h4 style="color: #28a745; margin: 0; font-size: 1.6em; font-weight: 900;">🔥 عرض خاص 🔥</h4>
-                        <p style="color: #28a745; font-weight: bold; margin: 8px 0 0; font-size: 1.2em;">قطعتين بـ 48,000 دج فقط!</p>
+                    <div style="margin-top: 20px; border-top: 2px solid #fab1a0; padding-top: 15px;">
+                        <h4 style="color: #00b894; margin: 0; font-size: 1.8em; font-weight: 900;">🔥 عرض خاص 🔥</h4>
+                        <p style="color: #00b894; font-weight: bold; margin: 8px 0 0; font-size: 1.3em;">قطعتين بـ 48,000 دج فقط!</p>
                     </div>
                 </div>
-                <p style="color: #777; font-size: 0.9em;">* تنبيه: سعر التوصيل غير محتسب في ثمن المنتج</p>
+                <p style="color: #636e72; font-size: 0.9em; font-style: italic;">* تنبيه: سعر التوصيل غير محتسب في ثمن المنتج</p>
             </div>
 
-            <div id="form-container" style="padding: 25px; background: #fdfdfd; border-top: 1px solid #eee;">
-                <input type="text" id="fullname" placeholder="الإسم واللقب الكامل *" style="width:100%; padding:16px; margin-bottom:12px; border:1px solid #ccc; border-radius:12px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
-                <input type="text" id="phone" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="رقم الهاتف (أرقام فقط) *" style="width:100%; padding:16px; margin-bottom:12px; border:1px solid #ccc; border-radius:12px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
+            <div id="form-container" style="padding: 30px; background: #fdfdfd; border-top: 1px solid #eee;">
+                <input type="text" id="fullname" placeholder="الإسم واللقب الكامل *">
+                <input type="text" id="phone" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="رقم الهاتف *">
                 
-                <select id="offer" style="width:100%; padding:16px; margin-bottom:12px; border:1px solid #ccc; border-radius:12px; background:white; font-size: 1.1em;">
+                <select id="offer">
                     <option value="1 قطعة (24,300 دج)">طلب قطعة واحدة (24,300 دج)</option>
                     <option value="2 قطعة (48,000 دج)">طلب قطعتين (48,000 دج)</option>
                 </select>
 
-                <select id="wilaya" style="width:100%; padding:16px; margin-bottom:12px; border:1px solid #ccc; border-radius:12px; background:white; font-size: 1.1em;">
+                <select id="wilaya">
                     <option value="">إختر الولاية... *</option>
                     ${options}
                 </select>
 
-                <input type="text" id="address_input" placeholder="العنوان بالتفصيل (البلدية، الحي..) *" style="width:100%; padding:16px; margin-bottom:15px; border:1px solid #ccc; border-radius:12px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
+                <input type="text" id="address_input" placeholder="العنوان بالتفصيل *">
 
-                <p style="font-weight: bold; font-size: 1.05em; margin: 15px 0 10px; color: #333;">وسيلة التوصيل (مصاريف الشحن):</p>
-                <select id="delivery_type" style="width:100%; padding:16px; margin-bottom:10px; border:2px solid #e63946; border-radius:12px; background:white; font-weight: bold; color: #e63946; font-size: 1.1em;">
+                <p style="font-weight: bold; font-size: 1.1em; margin: 15px 0 10px; color: #2d3436;">وسيلة التوصيل:</p>
+                <select id="delivery_type" style="border: 2px solid #d63031; color: #d63031; font-weight: bold;">
                     <option value="التوصيل للمنزل">🏠 التوصيل للمنزل (الدار)</option>
                     <option value="التوصيل للمكتب">🏢 التوصيل للمكتب (Yalidine/Bureau)</option>
                 </select>
-                <p style="color: #2b2d42; font-weight: bold; font-size: 1.1em; text-align: center; margin-bottom: 30px;">ملاحظة: الدفع عند الاستلام.</p>
+                <p style="color: #2d3436; font-weight: bold; font-size: 1.2em; text-align: center; margin: 25px 0;">ملاحظة: الدفع عند الاستلام.</p>
 
-                <button onclick="sendOrder()" id="btn-submit" style="width:100%; padding:22px; background:#e63946; color:white; border:none; border-radius:12px; font-size:1.6em; font-weight:900; cursor:pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);">تأكيد الطلب الآن</button>
+                <button onclick="sendOrder()" id="btn-submit" style="width:100%; padding:22px; background:#d63031; color:white; border:none; border-radius:15px; font-size:1.7em; font-weight:900; cursor:pointer; box-shadow: 0 10px 20px rgba(214, 48, 49, 0.3);">تأكيد الطلب الآن</button>
             </div>
         </div>
     `;
@@ -121,35 +117,28 @@ async function sendOrder() {
     }
 
     btn.disabled = true;
-    btn.innerText = "جاري الإرسال...";
+    btn.innerText = "جاري الحفظ...";
 
     try {
         const response = await fetch(apiURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                "data": [{ 
-                    "name": name, 
-                    "phone": phone, 
-                    "offer": offer, 
-                    "address": address, 
-                    "wilaya": wilaya, 
-                    "delivery": delivery 
-                }]
+                "data": [{ "name": name, "phone": phone, "offer": offer, "address": address, "wilaya": wilaya, "delivery": delivery }]
             })
         });
 
         if(response.ok) {
             mainCard.innerHTML = `
-                <div style="padding: 80px 20px; text-align: center; background: white; direction: rtl; border-radius: 20px;">
-                    <div style="font-size: 80px; color: #28a745; margin-bottom: 25px;">✅</div>
-                    <h2 style="color: #28a745; margin-bottom: 15px; font-size: 2em;">شكراً لثقتكم!</h2>
-                    <p style="font-size: 1.4em; color: #333; line-height: 1.6;">تم استلام طلبك بنجاح. سنتصل بك قريباً لتأكيد المعلومات.</p>
+                <div style="padding: 100px 20px; text-align: center; direction: rtl;">
+                    <div style="font-size: 90px; margin-bottom: 20px;">✅</div>
+                    <h2 style="color: #00b894; font-size: 2.2em;">تم الطلب بنجاح!</h2>
+                    <p style="font-size: 1.3em; color: #636e72;">سنتصل بك قريباً لتأكيد طلبك.</p>
                 </div>
             `;
         } else { throw new Error(); }
     } catch (e) {
-        alert('حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى');
+        alert('خطأ في الإرسال، حاول مجدداً');
         btn.disabled = false;
         btn.innerText = "تأكيد الطلب الآن";
     }
