@@ -17,18 +17,17 @@ function displayPage() {
 
     mainContent.innerHTML = `
         <style>
-            /* حركة وميض أضواء الطوارئ الحقيقية */
             @keyframes emergencyFlash {
-                0%, 100% { text-shadow: 0 0 10px red, 0 0 20px red; transform: scale(1); filter: brightness(1); }
-                50% { text-shadow: 0 0 15px blue, 0 0 25px blue; transform: scale(1.2); filter: brightness(1.5); }
+                0%, 100% { text-shadow: 0 0 10px red; transform: scale(1); }
+                50% { text-shadow: 0 0 20px blue; transform: scale(1.1); }
             }
-            /* حركة السعر السريعة والاحترافية */
             @keyframes fastBounce {
                 0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-7px); }
+                50% { transform: translateY(-5px); }
             }
-            .moving-price { animation: fastBounce 0.8s infinite ease-in-out; display: inline-block; }
-            .real-police-light { animation: emergencyFlash 0.5s infinite alternate; display: inline-block; cursor: default; }
+            .price-container { display: flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; margin: 10px 0; }
+            .moving-price { animation: fastBounce 0.8s infinite ease-in-out; color: #e63946; font-size: 2.5em; font-weight: 900; }
+            .police-light { animation: emergencyFlash 0.5s infinite alternate; font-size: 1.8em; }
         </style>
 
         <div id="order-card" style="max-width: 550px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; direction: rtl; font-family: sans-serif;">
@@ -40,12 +39,17 @@ function displayPage() {
 
                 <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 15px; border-radius: 12px; margin: 15px 0;">
                     <span style="text-decoration: line-through; color: #999; font-size: 1.2em;">25,000 دج</span>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 10px 0;">
-                        <span class="real-police-light" style="font-size: 2.2em;">🚨</span>
-                        <h3 class="moving-price" style="color: #e63946; font-size: 3em; margin: 0; font-weight: 900;">24,300 دج</h3>
-                        <span class="real-police-light" style="font-size: 2.2em;">🚨</span>
+                    
+                    <div class="price-container">
+                        <span class="police-light">🚨</span>
+                        <div class="moving-price">24,300 دج</div>
+                        <span class="police-light">🚨</span>
                     </div>
-                    <p style="color: #28a745; font-weight: bold; margin: 5px 0 0;">🔥 عرض خاص: قطعتين بـ 48,000 دج فقط!</p>
+                    
+                    <div style="margin-top: 15px; border-top: 1px solid #ffcccc; padding-top: 10px;">
+                        <h4 style="color: #28a745; margin: 0; font-size: 1.4em; font-weight: 900;">🔥 عرض خاص 🔥</h4>
+                        <p style="color: #28a745; font-weight: bold; margin: 5px 0; font-size: 1.1em;">قطعتين بـ 48,000 دج فقط!</p>
+                    </div>
                 </div>
                 <p style="color: #777; font-size: 0.85em;">* تنبيه: سعر التوصيل غير محتسب في ثمن المنتج</p>
             </div>
@@ -85,7 +89,7 @@ async function sendOrder() {
     const offer = document.getElementById('offer').value;
     const address = document.getElementById('address_input').value.trim();
     const wilaya = document.getElementById('wilaya').value;
-    const delivery = document.getElementById('delivery_type').value; // جلب قيمة التوصيل
+    const delivery = document.getElementById('delivery_type').value;
     
     const btn = document.getElementById('btn-submit');
     const mainCard = document.getElementById('order-card');
@@ -107,9 +111,9 @@ async function sendOrder() {
                     "name": name, 
                     "phone": phone, 
                     "offer": offer, 
-                    "address": address, // التأكد من كتابتها بـ dd لتطابق Sheet
+                    "address": address, 
                     "wilaya": wilaya, 
-                    "delivery": delivery // إرسال بيانات التوصيل للمنزل/المكتب
+                    "delivery": delivery 
                 }]
             })
         });
