@@ -46,12 +46,12 @@ function displayPage() {
                 <input type="text" id="fullname" placeholder="الإسم واللقب الكامل *" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
                 <input type="text" id="phone" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="رقم الهاتف (أرقام فقط) *" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
                 
-                <select id="offer" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em;">
+                <select id="offer" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em; direction: rtl;">
                     <option value="1 قطعة">طلب قطعة واحدة (24,300 دج)</option>
                     <option value="2 قطعة">طلب قطعتين (48,000 دج)</option>
                 </select>
 
-                <select id="wilaya" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em;">
+                <select id="wilaya" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em; direction: rtl;">
                     <option value="">إختر الولاية... *</option>
                     ${options}
                 </select>
@@ -59,7 +59,7 @@ function displayPage() {
                 <input type="text" id="address_input" placeholder="العنوان بالتفصيل (البلدية، الحي..) *" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
 
                 <p style="font-weight: bold; font-size: 1em; margin: 15px 0 10px; color: #444;">وسيلة التوصيل (مصاريف الشحن):</p>
-                <select id="delivery_type" style="width:100%; padding:15px; margin-bottom:8px; border:2px solid #e63946; border-radius:10px; background:white; font-weight: bold; color: #e63946; font-size: 1.1em;">
+                <select id="delivery_type" style="width:100%; padding:15px; margin-bottom:8px; border:2px solid #e63946; border-radius:10px; background:white; font-weight: bold; color: #e63946; font-size: 1.1em; direction: rtl;">
                     <option value="التوصيل للمنزل">🏠 التوصيل للمنزل (الدار)</option>
                     <option value="التوصيل للمكتب">🏢 التوصيل للمكتب (Yalidine/Bureau)</option>
                 </select>
@@ -109,4 +109,19 @@ async function sendOrder() {
             mainCard.innerHTML = `
                 <div style="padding: 60px 20px; text-align: center; background: white; direction: rtl;">
                     <div style="font-size: 70px; color: #28a745; margin-bottom: 20px;">✅</div>
-                    <h2 style="color: #28a745; margin-bottom: 15px;">شكراً لثقتكم!
+                    <h2 style="color: #28a745; margin-bottom: 15px;">شكراً لثقتكم!</h2>
+                    <p style="font-size: 1.3em; color: #333; line-height: 1.6;">تم استلام طلبك بنجاح. سنتصل بك قريباً.</p>
+                </div>
+            `;
+        } else {
+            throw new Error('API Error');
+        }
+    } catch (e) {
+        alert('حدث خطأ في الاتصال، يرجى المحاولة لاحقاً');
+        btn.disabled = false;
+        btn.innerText = "تأكيد الطلب الآن";
+    }
+}
+
+// تشغيل الواجهة فور تحميل الملف
+displayPage();
