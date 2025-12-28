@@ -13,139 +13,132 @@ function displayPage() {
             body { background: #f4f6f9; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; direction: rtl; }
             .container { width: 100%; max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
             
-            /* السطر العلوي الجديد */
-            .top-bar { background: #000; color: white; padding: 12px; text-align: center; font-size: 1.4rem; font-weight: 900; }
+            /* السطر العلوي المطلوب */
+            .top-bar { background: #000; color: white; padding: 12px; text-align: center; font-size: 1.5rem; font-weight: 900; }
 
             .main-header { padding: 20px 10px; text-align: center; }
-            .heading-bold { font-size: 1.8rem; font-weight: 900; color: #2d3436; margin: 10px 0 5px 0; line-height: 1.2; }
-            .machine-red { font-size: 2.8rem; font-weight: 900; color: #e63946; margin: 0; line-height: 1; }
+            .heading-line { font-size: 1.7rem; font-weight: 800; color: #333; margin: 10px 0; white-space: nowrap; }
+            .machine-title { font-size: 3rem; font-weight: 900; color: #e63946; margin: 0; line-height: 1.1; }
 
-            /* الإطار الذهبي الجذاب للمشاريع */
-            .gold-box { 
-                border: 3px solid #d4af37; background: linear-gradient(145deg, #fffcf0, #ffffff);
-                border-radius: 15px; padding: 15px; margin: 15px 20px;
-                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            /* إطار المشاريع المصغرة */
+            .gold-frame { 
+                border: 3px solid #d4af37; border-radius: 15px; padding: 15px; margin: 15px 20px;
+                background: #fffdf5;
             }
-            .audience-text { font-family: 'Tajawal', sans-serif; font-size: 1.3rem; font-weight: 800; color: #996515; margin: 0; }
+            .frame-text { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; font-weight: 900; color: #856404; margin: 0; white-space: nowrap; }
 
-            .brand-blue { font-size: 2.4rem; font-weight: 900; color: #007bff; margin: 10px 0 0 0; }
-            .solution-bulb { font-size: 1.5rem; font-weight: 800; color: #2ecc71; margin-bottom: 15px; }
+            .brand-name { font-size: 2.5rem; font-weight: 900; color: #007bff; margin: 10px 0 0 0; }
+            .bulb-text { font-size: 1.6rem; font-weight: 800; color: #28a745; margin-bottom: 15px; }
 
-            /* الوميض الشرطي المحسن */
-            @keyframes policeActive { 
-                0% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
-                50% { filter: drop-shadow(0 0 25px blue); transform: scale(1.2); }
-                100% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
+            /* الوميض الشرطي والأحمر والأزرق البارز */
+            @keyframes policeFlash { 
+                0% { filter: drop-shadow(0 0 10px red); transform: scale(1); opacity: 1; }
+                50% { filter: drop-shadow(0 0 30px blue); transform: scale(1.25); opacity: 0.8; }
+                100% { filter: drop-shadow(0 0 10px red); transform: scale(1); opacity: 1; }
             }
-            @keyframes priceJump {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-5px); }
+            @keyframes pricePulse {
+                0% { transform: scale(1); text-shadow: none; }
+                50% { transform: scale(1.08); text-shadow: 0 0 15px rgba(230, 57, 70, 0.4); }
+                100% { transform: scale(1); text-shadow: none; }
             }
 
-            .price-container { 
-                background: #fffafa; border: 2.5px dashed #e63946; border-radius: 20px; 
-                padding: 20px; margin: 0 15px; text-align: center; 
-            }
-            .price-row { display: flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; margin: 10px 0; }
-            .price-val { color: #e63946; font-size: 3.3rem; font-weight: 900; margin: 0; animation: priceJump 0.4s infinite; }
-            .siren { animation: policeActive 0.3s infinite; font-size: 2.3rem; }
+            .price-box { border: 2.5px dashed #e63946; border-radius: 20px; padding: 20px; margin: 0 15px; background: #fffafa; }
+            .price-row { display: flex; align-items: center; justify-content: center; gap: 15px; white-space: nowrap; margin: 10px 0; }
+            .price-main { color: #e63946; font-size: 3.5rem; font-weight: 900; margin: 0; animation: pricePulse 0.4s infinite ease-in-out; }
+            .siren-icon { animation: policeFlash 0.3s infinite; font-size: 2.5rem; }
 
-            .form-section { padding: 25px; }
-            .input-field { width: 100%; padding: 18px; margin-bottom: 12px; border: 1.8px solid #eee; border-radius: 12px; font-family: 'Cairo'; font-size: 1.1rem; box-sizing: border-box; }
-            
-            .pay-note { font-family: 'Tajawal', sans-serif; font-weight: 900; font-size: 1.3rem; color: #2d3436; text-align: center; margin: 15px 0; }
-            .submit-btn { 
-                width: 100%; padding: 22px; background: #e63946; color: white; 
-                border: none; border-radius: 15px; font-size: 1.8rem; font-weight: 900; 
-                cursor: pointer; box-shadow: 0 10px 25px rgba(230, 57, 70, 0.3); 
-            }
+            .order-form { padding: 25px; }
+            .form-input { width: 100%; padding: 18px; margin-bottom: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Cairo'; font-size: 1.1rem; box-sizing: border-box; }
+            .delivery-select { border: 2.5px solid #e63946 !important; color: #e63946; font-weight: 900; }
+            .payment-note { font-family: 'Tajawal', sans-serif; font-weight: 900; font-size: 1.3rem; color: #2d3436; text-align: center; margin: 15px 0; }
+            .btn-submit { width: 100%; padding: 22px; background: #e63946; color: white; border: none; border-radius: 15px; font-size: 1.8rem; font-weight: 900; cursor: pointer; box-shadow: 0 10px 25px rgba(230, 57, 70, 0.3); }
         </style>
 
-        <div class="container" id="main-view">
-            <div class="top-bar">🇩🇿 Click-Quick 📣</div>
+        <div class="container" id="app-view">
+            <div class="top-bar">🇩🇿 Click-Quick 🇩🇿</div>
 
             <div class="main-header">
-                <div class="heading-bold">آلة صناعة الشارات الإحترافية</div>
-                <h1 class="machine-red">Machine Pin's</h1>
+                <div class="heading-line">آلة صناعة الشارات الإحترافية</div>
+                <h1 class="machine-title">Machine Pin's</h1>
                 
-                <div class="gold-box">
-                    <div class="audience-text">أصحاب المشاريع المصغرة</div>
-                    <div class="audience-text">وأصحاب المشاريع المنزلية</div>
+                <div class="gold-frame">
+                    <div class="frame-text">أصحاب المشاريع المصغرة</div>
+                    <div class="frame-text">وأصحاب المشاريع المصغرة</div>
                 </div>
 
-                <div class="brand-blue">CLICK QUICK</div>
-                <div class="solution-bulb">جابتلكم الحل 💡</div>
+                <div class="brand-name">CLICK QUICK</div>
+                <div class="bulb-text">💡 جابتلكم الحل</div>
 
-                <div class="price-container">
+                <div class="price-box">
                     <span style="text-decoration: line-through; color: #bbb; font-size: 1.4rem;">25,000 دج</span>
                     <div class="price-row">
-                        <span class="siren">🚨</span>
-                        <h2 class="price-val">24,300 دج</h2>
-                        <span class="siren">🚨</span>
+                        <span class="siren-icon">🚨</span>
+                        <h2 class="price-main">24,300 دج</h2>
+                        <span class="siren-icon">🚨</span>
                     </div>
-                    <div style="border-top: 1px solid #ffebeb; margin-top: 10px; padding-top: 10px;">
+                    <div style="border-top: 1px solid #ffebeb; padding-top: 10px;">
                         <h4 style="color: #28a745; margin: 0; font-size: 1.8rem; font-weight: 900;">🔥 عرض خاص 🔥</h4>
                         <p style="color: #28a745; font-weight: 800; margin: 5px 0;">قطعتين بـ 48,000 دج فقط!</p>
                     </div>
                 </div>
             </div>
 
-            <div class="form-section">
-                <input type="text" id="c_name" class="input-field" placeholder="الإسم واللقب الكامل *">
-                <input type="text" id="c_phone" inputmode="numeric" class="input-field" placeholder="رقم الهاتف (أرقام فقط) *">
+            <div class="order-form">
+                <input type="text" id="inp_name" class="form-input" placeholder="الإسم واللقب الكامل *">
+                <input type="text" id="inp_phone" inputmode="numeric" class="form-input" placeholder="رقم الهاتف (أرقام فقط) *">
                 
-                <select id="c_offer" class="input-field">
+                <select id="inp_offer" class="form-input">
                     <option value="1 قطعة (24,300 دج)">طلب قطعة واحدة (24,300 دج)</option>
                     <option value="2 قطعة (48,000 دج)">طلب قطعتين (48,000 دج)</option>
                 </select>
 
-                <select id="c_wilaya" class="input-field">
+                <select id="inp_wilaya" class="form-input">
                     <option value="">إختر الولاية... *</option>
                     ${wilayas.map(w => `<option value="${w}">${w}</option>`).join('')}
                 </select>
 
-                <input type="text" id="c_address" class="input-field" placeholder="العنوان بالتفصيل *">
+                <input type="text" id="inp_address" class="form-input" placeholder="العنوان بالتفصيل *">
 
                 <p style="font-weight: 900; margin: 10px 0 5px 0;">وسيلة التوصيل:</p>
-                <select id="c_delivery" class="input-field" style="border: 2.5px solid #e63946; color: #e63946; font-weight: 900;">
+                <select id="inp_delivery" class="form-input delivery-select">
                     <option value="التوصيل للمنزل">🏠 التوصيل للمنزل (الدار)</option>
                     <option value="التوصيل للمكتب">🏢 التوصيل للمكتب (Yalidine)</option>
                 </select>
 
-                <div class="pay-note">ملاحظة: الدفع عند الإستلام</div>
+                <div class="payment-note">ملاحظة: الدفع عند الإستلام</div>
 
-                <button onclick="sendOrder()" id="s-btn" class="submit-btn">تأكيد الطلب الآن</button>
+                <button onclick="handleSubmit()" id="submit-action" class="btn-submit">تأكيد الطلب الآن</button>
             </div>
         </div>
     `;
 }
 
-async function sendOrder() {
-    const data = {
-        name: document.getElementById('c_name').value.trim(),
-        phone: document.getElementById('c_phone').value.trim(),
-        offer: document.getElementById('c_offer').value,
-        wilaya: document.getElementById('c_wilaya').value,
-        address: document.getElementById('c_address').value.trim(),
-        delivery: document.getElementById('c_delivery').value
+async function handleSubmit() {
+    const fields = {
+        name: document.getElementById('inp_name').value.trim(),
+        phone: document.getElementById('inp_phone').value.trim(),
+        offer: document.getElementById('inp_offer').value,
+        wilaya: document.getElementById('inp_wilaya').value,
+        address: document.getElementById('inp_address').value.trim(),
+        delivery: document.getElementById('inp_delivery').value
     };
 
-    if(!data.name || !data.phone || !data.wilaya || !data.address) return alert("يرجى إكمال البيانات");
+    if(!fields.name || !fields.phone || !fields.wilaya || !fields.address) return alert("يرجى ملء جميع الخانات");
 
-    const btn = document.getElementById('s-btn');
+    const btn = document.getElementById('submit-action');
     btn.disabled = true; btn.innerText = "جاري الإرسال...";
 
     try {
         const res = await fetch(apiURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "data": [data] })
+            body: JSON.stringify({ "data": [fields] })
         });
         if(res.ok) {
-            document.getElementById('main-view').innerHTML = `<div style="padding: 150px 20px; text-align: center;"><h2>✅ شكراً لك! تم استلام طلبك.</h2></div>`;
+            document.getElementById('app-view').innerHTML = `<div style="padding: 150px 20px; text-align: center;"><h2>✅ تم استلام طلبك بنجاح!</h2><p>سنتصل بك قريباً لتأكيد العنوان.</p></div>`;
         } else throw new Error();
     } catch (e) {
-        alert("خطأ، حاول مجدداً");
+        alert("فشل في الإرسال، يرجى المحاولة لاحقاً");
         btn.disabled = false; btn.innerText = "تأكيد الطلب الآن";
     }
 }
